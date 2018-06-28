@@ -32,16 +32,34 @@ if(isset($_POST['insert_record'])) {
     <title>gggggg</title>
 </head>
 <body>
-    <form action="user.php" method="post" >
-        <label>id</label>
-        <input type="text" name="id">
-        <label>name</label>
-        <input type="text" name="name">
-        <label>age</label>
-        <input type="text" name="age">
+    <div>
+        <form action="user.php" method="post" >
+            <label>id</label>
+            <input type="text" name="id">
+            <label>name</label>
+            <input type="text" name="name">
+            <label>age</label>
+            <input type="text" name="age">
 
-        <input type="submit" name="insert_record"/>
-    </form>
+            <input type="submit" name="insert_record"/>
+        </form>
+    </div>
+    <div>
+        <?php
+            $get = oci_parse($conn,'SELECT * FROM admin');
+            oci_execute($get);
+
+            echo "<table>\n";
+            while ($row = oci_fetch_array($get,OCI_ASSOC+OCI_RETURN_NULLS)){
+                echo "<tr>\n";
+                foreach ($row as $item){
+                    echo "<td>".($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;")."</td>\n";
+                }
+                echo "</tr>\n";
+            }
+            echo "</table>\n";
+        ?>
+    </div>
 </body>
 </html>
 
