@@ -93,10 +93,26 @@ if(isset($_POST['insert_record'])) {
                             <div class="form-group">
 
                                 <select class="form-control" name="rover">
-                                    <option value="">Rover ID</option>
-                                    <option value="R001">R001</option>
-                                    <option value="R002">R002</option>
-                                    <option value="R003">R003</option>
+                                    <option disabled selected>Select Rover ID</option>
+                                    <?php
+                                    $get = oci_parse($conn,'SELECT "Rover_ID" FROM rover');
+                                    oci_execute($get);
+
+//                                    echo "<select class=\"form-control\" name=\"rover\">";
+                                    while ($row = oci_fetch_array($get,OCI_ASSOC+OCI_RETURN_NULLS)){
+//                                        echo "<tr>\n";
+
+                                        echo "<option value='" . $row['rover'] . "'>" . $row['Rover_ID'] . "</option>";
+
+                                    }
+//                                    echo "</select>";
+
+                                    ?>
+
+<!--                                    <option value="">Rover ID</option>-->
+<!--                                    <option value="R001">R001</option>-->
+<!--                                    <option value="R002">R002</option>-->
+<!--                                    <option value="R003">R003</option>-->
                                 </select>
 
                             </div>
@@ -104,7 +120,7 @@ if(isset($_POST['insert_record'])) {
                             <div class="form-group">
 
                                 <select class="form-control" name="camera">
-                                    <option value="">Camera type</option>
+                                    <option value=""disabled selected>Camera type</option>
                                     <option value="Pancam">Pancam</option>
                                     <option value="Navcam">Navcam</option>
                                     <option value="Hazcams">Hazcams</option>
