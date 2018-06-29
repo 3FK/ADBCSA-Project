@@ -14,6 +14,8 @@ INSERT INTO rover ("Rover_ID","Launch_Date","Launched_From","Sizes","MainObjecti
 DROP TABLE rover;
 
 table telecommunication_mean
-CREATE TABLE telecommunication_mean("telecommunication_ID" VARCHAR2(20),"Rover_ID" VARCHAR2(5),"telecommunication_Name" VARCHAR2(25),"telecommunication_type" VARCHAR2(25) );
+CREATE TABLE telecommunication_mean("telecommuni_ID" VARCHAR2(20),"Rover_ID" VARCHAR2(5),"telecommunicat_Name" VARCHAR2(25),"telecommunicationtype" VARCHAR2(25) );
+
+INSERT INTO camera ("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES ()');
 
 DROP TABLE telecommunication_mean;
