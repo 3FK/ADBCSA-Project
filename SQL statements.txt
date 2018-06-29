@@ -1,0 +1,14 @@
+table camera
+CREATE TABLE camera(Rover_ID VARCHAR2(5),Camera_Type VARCHAR2(20),Focal_Length VARCHAR2(10),FieldOfView VARCHAR2(15),No_Of_Pixels VARCHAR2(15),Memory VARCHAR2(20));
+
+INSERT INTO camera (Rover_ID,Camera_Type,Focal_Length,FieldOfView,No_Of_Pixels,Memory) VALUES (R002,Pancam,5,1024);
+
+DROP TABLE camera;
+
+
+table rover
+CREATE TABLE rover ("Rover_ID" VARCHAR2(5),"Launch_Date" VARCHAR2(20),"Launched_From" VARCHAR2(15),"Sizes" VARCHAR2(15),"MainObjective" VARCHAR2(50),"Mass" VARCHAR2(20),"Landed_Date" VARCHAR2(20),"Land_To" VARCHAR2(15));
+
+INSERT INTO rover ("Rover_ID","Launch_Date","Launched_From","Sizes","MainObjective","Mass","Landed_Date","Land_To") VALUES ('R001','2018.06.21','America','50ft','Discover water','200Kg','2019.06.21',	'Mars');
+
+DROP TABLE rover;

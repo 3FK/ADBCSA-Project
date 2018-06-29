@@ -5,20 +5,24 @@
 //$age=18;
 $conn = oci_connect("SYSTEM", "oracle", 'localhost/xe');
 if(isset($_POST['insert_record'])) {
-    $rover=$_POST['rover'];
-    $camera=$_POST['camera'];
-    $FocalLength=$_POST['FocalLength'];
-    $FieldOfView=$_POST['FieldOfView'];
-    $NoOfPixel=$_POST['NoOfPixel'];
-    $Memory=$_POST['Memory'];
+    $Rover_ID=$_POST['Rover_ID'];
+    $Launched_Date=$_POST['Launched_Date'];
+    $Launched_From=$_POST['Launched_From'];
+    $Sizes=$_POST['Sizes'];
+    $Objective=$_POST['Objective'];
+    $Mass=$_POST['Mass'];
+    $Landed_Date=$_POST['Landed_Date'];
+    $Landed_To=$_POST['Landed_To'];
 
-    $stmt = oci_parse($conn, 'INSERT INTO rover (Rover_ID,Camera_Type,Focal_Length,FieldOfView,No_Of_Pixels,Memory) VALUES (:Rover_ID,:Camera_Type,:Focal_Length,:FieldOfView,:No_Of_Pixels,:Memory)');
-    oci_bind_by_name($stmt, ':Rover_ID', $rover);
-    oci_bind_by_name($stmt, ':Camera_Type', $camera);
-    oci_bind_by_name($stmt, ':Focal_Length', $FocalLength);
-    oci_bind_by_name($stmt, ':FieldOfView', $FieldOfView);
-    oci_bind_by_name($stmt, ':No_Of_Pixels', $NoOfPixel);
-    oci_bind_by_name($stmt, ':Memory', $Memory);
+    $stmt = oci_parse($conn, 'INSERT INTO rover ("Rover_ID","Launch_Date","Launched_From","Sizes","MainObjective","Mass","Landed_Date","Land_To") VALUES(:Rover_ID,:Launch_Date,:Launched_From,:Sizes,:MainObjective,:Mass,:Landed_Date,:Land_To)');
+    oci_bind_by_name($stmt, ':Rover_ID', $Rover_ID);
+    oci_bind_by_name($stmt, ':Launch_Date', $Launched_Date);
+    oci_bind_by_name($stmt, ':Launched_From', $Launched_From);
+    oci_bind_by_name($stmt, ':Sizes', $Sizes);
+    oci_bind_by_name($stmt, ':MainObjective', $Objective);
+    oci_bind_by_name($stmt, ':Mass', $Mass);
+    oci_bind_by_name($stmt, ':Landed_Date', $Landed_Date);
+    oci_bind_by_name($stmt, ':Land_To', $Landed_To);
     $execute=oci_execute($stmt);
     if($execute){
         print "inserted";
@@ -69,7 +73,7 @@ if(isset($_POST['insert_record'])) {
 
                             <div class="form-group">
 
-                                <input class="form-control" placeholder="Size" name="Size" type="text">
+                                <input class="form-control" placeholder="Size" name="Sizes" type="text">
 
                             </div>
 
@@ -86,7 +90,7 @@ if(isset($_POST['insert_record'])) {
                             </div>
                             <div class="form-group">
 
-                                <span class="label-default">Launched Date</span>
+                                <span class="label-default">Landed Date</span>
                                 <input class="form-control" placeholder="Landed Date" name="Landed_Date" type="date">
 
                             </div>
