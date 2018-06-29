@@ -1,7 +1,7 @@
 table camera
-CREATE TABLE camera(Rover_ID VARCHAR2(5),Camera_Type VARCHAR2(20),Focal_Length VARCHAR2(10),FieldOfView VARCHAR2(15),No_Of_Pixels VARCHAR2(15),Memory VARCHAR2(20));
+CREATE TABLE camera("camera_id" VARCHAR2(5),"Rover_ID" VARCHAR2(5),"Camera_Type" VARCHAR2(20),"Focal_Length" VARCHAR2(10),"FieldOfView" VARCHAR2(15),"No_Of_Pixels" VARCHAR2(15),"Memory" VARCHAR2(20));
 
-INSERT INTO camera (Rover_ID,Camera_Type,Focal_Length,FieldOfView,No_Of_Pixels,Memory) VALUES (R002,Pancam,5,1024);
+INSERT INTO camera ("camera_id","Rover_ID","Camera_Type","Focal_Length","FieldOfView","No_Of_Pixels","Memory") VALUES ('C001','R002','Pancam','5','80','20','1024');
 
 DROP TABLE camera;
 
@@ -12,3 +12,8 @@ CREATE TABLE rover ("Rover_ID" VARCHAR2(5),"Launch_Date" VARCHAR2(20),"Launched_
 INSERT INTO rover ("Rover_ID","Launch_Date","Launched_From","Sizes","MainObjective","Mass","Landed_Date","Land_To") VALUES ('R001','2018.06.21','America','50ft','Discover water','200Kg','2019.06.21',	'Mars');
 
 DROP TABLE rover;
+
+table telecommunication_mean
+CREATE TABLE telecommunication_mean("telecommunication_ID" VARCHAR2(20),"Rover_ID" VARCHAR2(5),"telecommunication_Name" VARCHAR2(25),"telecommunication_type" VARCHAR2(25) );
+
+DROP TABLE telecommunication_mean;

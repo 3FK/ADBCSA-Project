@@ -1,9 +1,9 @@
-    <!--/**-->
-    <!-- * Created by PhpStorm.-->
-    <!-- * User: Vanni Kotiyaa-->
-    <!-- * Date: 6/28/2018-->
-    <!-- * Time: 7:36 PM-->
-    <!-- */-->
+<!--/**-->
+<!-- * Created by PhpStorm.-->
+<!-- * User: Vanni Kotiyaa-->
+<!-- * Date: 6/28/2018-->
+<!-- * Time: 7:36 PM-->
+<!-- */-->
 <!DOCTYPE HTML>
 <?php
 //include 'main.php';
@@ -12,22 +12,17 @@
 //$age=18;
 $conn = oci_connect("SYSTEM", "oracle", 'localhost/xe');
 if(isset($_POST['insert_record'])) {
-    $camera_id=$_POST['camera_id'];
+    $telecom_id=$_POST['telecom_id'];
     $rover=$_POST['rover'];
-    $camera=$_POST['camera'];
-    $FocalLength=$_POST['FocalLength'];
-    $FieldOfView=$_POST['FieldOfView'];
-    $NoOfPixel=$_POST['NoOfPixel'];
-    $Memory=$_POST['Memory'];
+    $telecomName=$_POST['telecomName'];
+    $telecomtype=$_POST['telecomtype'];
 
-    $stmt = oci_parse($conn, 'INSERT INTO camera ("camera_id","Rover_ID","Camera_Type","Focal_Length","FieldOfView","No_Of_Pixels","Memory") VALUES (:camera_id,:Rover_ID,:Camera_Type,:Focal_Length,:FieldOfView,:No_Of_Pixels,:Memory)');
-    oci_bind_by_name($stmt, ':camera_id', $camera_id);
+    $stmt = oci_parse($conn, 'INSERT INTO telecommunication_mean ("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES (:telecommuni_ID,:Rover_ID,:telecommunicat_Name,:telecommunicationtype)');
+    oci_bind_by_name($stmt, ':telecommuni_ID', $telecom_id);
     oci_bind_by_name($stmt, ':Rover_ID', $rover);
-    oci_bind_by_name($stmt, ':Camera_Type', $camera);
-    oci_bind_by_name($stmt, ':Focal_Length', $FocalLength);
-    oci_bind_by_name($stmt, ':FieldOfView', $FieldOfView);
-    oci_bind_by_name($stmt, ':No_Of_Pixels', $NoOfPixel);
-    oci_bind_by_name($stmt, ':Memory', $Memory);
+    oci_bind_by_name($stmt, ':telecommunicat_Name', $telecomName);
+    oci_bind_by_name($stmt, ':telecommunicationtype', $telecomtype);
+
     $execute=oci_execute($stmt);
     if($execute){
         print "inserted";
@@ -38,11 +33,11 @@ if(isset($_POST['insert_record'])) {
 }
 ?>
 <html>
-    <head>
+<head>
 
-        <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
 
-    </head>
+</head>
 <body>
 
 <!-- Navigation -->
@@ -89,12 +84,12 @@ if(isset($_POST['insert_record'])) {
 
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" action="Camera.php" method="post">
+                    <form accept-charset="UTF-8" role="form" action="telecom.php" method="post">
                         <fieldset>
 
                             <div class="form-group">
 
-                                <input class="form-control" placeholder="Camera ID" name="camera_id" type="text">
+                                <input class="form-control" placeholder="Telecomiunication ID" name="telecom_id" type="text">
 
                             </div>
 
@@ -112,39 +107,19 @@ if(isset($_POST['insert_record'])) {
                                 </select>
                             </div>
 
-                            <div class="form-group">
-
-                                <select class="form-control" name="camera">
-                                    <option value=""disabled selected>Camera type</option>
-                                    <option value="Pancam">Pancam</option>
-                                    <option value="Navcam">Navcam</option>
-                                    <option value="Hazcams">Hazcams</option>
-                                </select>
-                            </div>
 
                             <div class="form-group">
 
-                                 <input class="form-control" placeholder="Focal Length" name="FocalLength" type="text">
+                                <input class="form-control" placeholder="Telecomiunication Mean Name" name="telecomName" type="text">
 
                             </div>
 
                             <div class="form-group">
 
-                                <input class="form-control" placeholder="Field Of View" name="FieldOfView" type="text">
+                                <input class="form-control" placeholder="Telecomiunication Mean Type" name="telecomtype" type="text">
 
                             </div>
 
-                            <div class="form-group">
-
-                                <input class="form-control" placeholder="Number of Pixels" name="NoOfPixel" type="text">
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <input class="form-control" placeholder="Memory" name="Memory" type="text">
-
-                            </div>
 
                             <input class="btn btn-lg btn-dark btn-block" type="submit" name="insert_record" value="Add Camera">
                         </fieldset>
