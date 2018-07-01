@@ -23,5 +23,5 @@ BEGIN
 END;
 /
 
-
+INSERT INTO ROVER ("ROVER_Name","Launched_Date","Launched_From","Mass","Landed_Date","Landed_To") VALUES('Rover_Name,'Launched_Date','Launched_From',80,'Landed_Date','Landed_To')
 

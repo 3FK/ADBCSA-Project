@@ -5,7 +5,7 @@ Launched_Date char(10),
 Launched_From varchar(50),
 Mass NUMBER(5),
 Landed_Date char(10),
-Landed_To varchar(50),
+Landed_To varchar(50)
 )
 /
 
@@ -21,8 +21,9 @@ BEFORE INSERT ON ROVER
 FOR EACH ROW
 
 BEGIN
-  SELECT 'RID'|| to_char(admin_seq.NEXTVAL,'00099')
-  INTO   :new.id
+  SELECT 'RID'|| to_char(ROVER_seq.NEXTVAL,'00099')
+  INTO   :new.rover_id
   FROM   dual;
 END;
 /
+

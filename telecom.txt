@@ -1,0 +1,30 @@
+table TELECOMMUNICATION_MEAN
+CREATE TABLE TELECOMMUNICATION_MEAN(
+Telecommunication_Id VARCHAR(12) PRIMARY KEY,
+Telecommunication_Name VARCHAR(20),
+Telecommunication_Type varchar(20);
+Rover_ID varchar(10),
+CONSTRAINT FK_Telecommunication FOREIGN KEY (Rover_ID) REFERENCES ROVER(Rover_ID)
+)
+/
+CREATE SEQUENCE Telecommunication_seq
+START WITH 1
+INCREMENT BY 5
+NOCACHE
+NOCYCLE;
+/
+CREATE OR REPLACE TRIGGER Telecommunication_Id_Trigger
+BEFORE INSERT ON TELECOMMUNICATION_MEAN
+FOR EACH ROW
+
+BEGIN
+  SELECT 'TeleID'|| to_char(ROVER_seq.NEXTVAL,'00099')
+  INTO   :new.telecommunication_Id
+  FROM   dual;
+END;
+/
+
+
+INSERT INTO camera ("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES ()');
+
+DROP TABLE telecommunication_mean;
