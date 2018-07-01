@@ -8,12 +8,12 @@
 $conn = oci_connect("system", "goodgame12", "localhost/XE");
 if(isset($_POST['insert_record'])) {
 
-    $id=$_POST['id'];
+//    $id=$_POST['id'];ID,:ID,oci_bind_by_name($stmt, ':ID', $id);
     $name=$_POST['name'];
     $age=$_POST['age'];
 
-    $stmt = oci_parse($conn, 'INSERT INTO admin (ID,NAME,AGE) VALUES (:ID,:NAME,:AGE)');
-    oci_bind_by_name($stmt, ':ID', $id);
+    $stmt = oci_parse($conn, 'INSERT INTO admin (NAME,AGE) VALUES (:NAME,:AGE)');
+
     oci_bind_by_name($stmt, ':NAME', $name);
     oci_bind_by_name($stmt, ':AGE', $age);
 
@@ -34,8 +34,8 @@ if(isset($_POST['insert_record'])) {
 <body>
     <div>
         <form action="user.php" method="post" >
-            <label>id</label>
-            <input type="text" name="id">
+<!--            <label>id</label>-->
+<!--            <input type="text" name="id">-->
             <label>name</label>
             <input type="text" name="name">
             <label>age</label>
