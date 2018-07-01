@@ -12,16 +12,16 @@
 //$age=18;
 $conn = oci_connect("SYSTEM", "oracle", 'localhost/xe');
 if(isset($_POST['insert_record'])) {
-    $telecom_id=$_POST['telecom_id'];
+    $spectrometer_id=$_POST['spectrometer_id'];
     $rover=$_POST['rover'];
-    $telecomName=$_POST['telecomName'];
-    $telecomtype=$_POST['telecomtype'];
+    $spectrometer_Name=$_POST['spectrometer_Name'];
+    $Spectrometer_type=$_POST['Spectrometer_type'];
 
-    $stmt = oci_parse($conn, 'INSERT INTO telecommunication_mean ("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES (:telecommuni_ID,:Rover_ID,:telecommunicat_Name,:telecommunicationtype)');
-    oci_bind_by_name($stmt, ':telecommuni_ID', $telecom_id);
+    $stmt = oci_parse($conn, 'INSERT INTO SPECTROMETER ("SPECTROMETER_ID","Rover_ID","SPECTROMETER_NAME","SPECTROMETER_TYPE") VALUES (:SPECTROMETER_ID,:Rover_ID,:SPECTROMETER_NAME,:SPECTROMETER_TYPE)');
+    oci_bind_by_name($stmt, ':SPECTROMETER_ID', $spectrometer_id);
     oci_bind_by_name($stmt, ':Rover_ID', $rover);
-    oci_bind_by_name($stmt, ':telecommunicat_Name', $telecomName);
-    oci_bind_by_name($stmt, ':telecommunicationtype', $telecomtype);
+    oci_bind_by_name($stmt, ':SPECTROMETER_NAME', $spectrometer_Name);
+    oci_bind_by_name($stmt, ':SPECTROMETER_TYPE', $Spectrometer_type);
 
     $execute=oci_execute($stmt);
     if($execute){
@@ -75,7 +75,7 @@ if(isset($_POST['insert_record'])) {
 
 <br><br><br><br><br><br>
 
-<!-------------------------content of the add Telecomiunication Mean ----------------------------------------->
+<!-------------------------content of the add spectrometer----------------------------------------->
 <div class="container">
     <div class="row">
         <div class="col-md-8 ">
@@ -84,12 +84,12 @@ if(isset($_POST['insert_record'])) {
 
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" action="telecom.php" method="post">
+                    <form accept-charset="UTF-8" role="form" action="spectrometer.php" method="post">
                         <fieldset>
 
                             <div class="form-group">
 
-                                <input class="form-control" placeholder="Telecomiunication ID" name="telecom_id" type="text">
+                                <input class="form-control" placeholder="spectrometer ID" name="spectrometer_id" type="text">
 
                             </div>
 
@@ -106,22 +106,24 @@ if(isset($_POST['insert_record'])) {
                                     ?>
                                 </select>
                             </div>
-
-
                             <div class="form-group">
 
-                                <input class="form-control" placeholder="Telecomiunication Mean Name" name="telecomName" type="text">
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <input class="form-control" placeholder="Telecomiunication Mean Type" name="telecomtype" type="text">
+                                <input class="form-control" placeholder="Spectrometer Name" name="spectrometer_Name" type="text">
 
                             </div>
 
 
-                            <input class="btn btn-lg btn-dark btn-block" type="submit" name="insert_record" value="Add Camera">
+                            <div class="form-group">
+
+                                <select class="form-control" name="Spectrometer_type">
+                                    <option value=""disabled selected>spectrometer type</option>
+                                    <option value="Miniature Thermal Emission Spectrometer">Miniature Thermal Emission Spectrometer </option>
+                                    <option value="Mössbauer spectrometer">Mössbauer spectrometer </option>
+                                    <option value="Alpha Particle X-ray Spectrometer">Alpha Particle X-ray Spectrometer </option>
+                                </select>
+                            </div>
+
+                            <input class="btn btn-lg btn-dark btn-block" type="submit" name="insert_record" value="Add Spectrometer">
                         </fieldset>
                     </form>
                 </div>

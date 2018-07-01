@@ -8,6 +8,6 @@ DROP TABLE camera;
 table telecommunication_mean
 CREATE TABLE telecommunication_mean("telecommuni_ID" VARCHAR2(20),"Rover_ID" VARCHAR2(5),"telecommunicat_Name" VARCHAR2(25),"telecommunicationtype" VARCHAR2(25) );
 
-INSERT INTO camera ("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES ()');
+INSERT INTO telecommunication_mean("telecommuni_ID","Rover_ID","telecommunicat_Name","telecommunicationtype") VALUES ()');
 
 DROP TABLE telecommunication_mean;
