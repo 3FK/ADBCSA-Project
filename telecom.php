@@ -75,7 +75,7 @@ if(isset($_POST['insert_record'])) {
 
 <br><br><br><br><br><br>
 
-<!-------------------------content of the add Camera----------------------------------------->
+<!-------------------------content of the add Telecomiunication Mean ----------------------------------------->
 <div class="container">
     <div class="row">
         <div class="col-md-8 ">
