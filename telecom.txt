@@ -1,7 +1,7 @@
 table TELECOMMUNICATION_MEAN
 CREATE TABLE TELECOMMUNICATION_MEAN(
 Telecommunication_Id VARCHAR(12) PRIMARY KEY,
-Telecommunication_Name VARCHAR(20),
+Telecommunication_Name VARCHAR(20) UNIQUE,
 Telecommunication_Type varchar(20);
 Rover_ID varchar(10),
 CONSTRAINT FK_Telecommunication FOREIGN KEY (Rover_ID) REFERENCES ROVER(Rover_ID)
