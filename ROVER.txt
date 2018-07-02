@@ -27,3 +27,4 @@ BEGIN
 END;
 /
 
+UPDATE  ROVER SET ROVER_Name = :Rover_Name,Launched_Date=:Launched_Date,Launched_From= :Launched_From,Mass= :Mass,Landed_Date= :Landed_Date,Landed_to=:Landed_To WHERE ROVER_ID = '$rover'   "

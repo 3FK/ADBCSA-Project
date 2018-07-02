@@ -102,10 +102,10 @@ if(isset($_POST['insert_record'])) {
                                 <select class="form-control" name="rover">
                                     <option disabled selected>Select Rover ID</option>
                                     <?php
-                                    $get = oci_parse($conn,'SELECT "Rover_ID" FROM rover');
+                                    $get = oci_parse($conn,'SELECT "ROVER_ID" FROM ROVER');
                                     oci_execute($get);
                                     while ($row = oci_fetch_array($get,OCI_ASSOC+OCI_RETURN_NULLS)){
-                                        echo "<option value='" . $row['rover'] . "'>" . $row['Rover_ID'] . "</option>";
+                                        echo "<option value='" . $row['ROVER_ID'] . "'>" . $row['ROVER_ID'] . "</option>";
 
                                     }
                                     ?>

@@ -1,6 +1,8 @@
 <?php
 $conn = oci_connect("SYSTEM", "oracle", 'localhost/xe');
-if(isset($_POST['insert_record'])) {
+if(isset($_POST['Update_record'])) {
+    $rover=$_POST['rover'];
+
     $Rover_Name=$_POST['Rover_Name'];
     $Launched_Date=$_POST['Launched_Date'];
     $Launched_From=$_POST['Launched_From'];
@@ -8,20 +10,26 @@ if(isset($_POST['insert_record'])) {
     $Landed_Date=$_POST['Landed_Date'];
     $Landed_To=$_POST['Landed_To'];
 
-    $stmt = oci_parse($conn, 'INSERT INTO ROVER (ROVER_Name,Launched_Date,Launched_From,Mass,Landed_Date,Landed_to) VALUES(:Rover_Name,:Launched_Date,:Launched_From,:Mass,:Landed_Date,:Landed_To)');
+    $stmt = oci_parse($conn, 'UPDATE  ROVER SET ROVER_Name = :Rover_Name,Launched_Date=:Launched_Date,Launched_From= :Launched_From,Mass= :Mass,Landed_Date= :Landed_Date,Landed_to=:Landed_To WHERE ROVER_ID = :rover ');
     oci_bind_by_name($stmt, ':Rover_Name', $Rover_Name);
     oci_bind_by_name($stmt, ':Launched_Date', $Launched_Date);
     oci_bind_by_name($stmt, ':Launched_From', $Launched_From);
     oci_bind_by_name($stmt, ':Mass', $Mass);
     oci_bind_by_name($stmt, ':Landed_Date', $Landed_Date);
     oci_bind_by_name($stmt, ':Landed_To', $Landed_To);
+    oci_bind_by_name($stmt,':rover',$rover);
     $execute=oci_execute($stmt);
     if($execute){
-        print "inserted";
+        print "updated";
         $commit = oci_parse($conn,'Commit');
         oci_execute($commit);
     }
     oci_free_statement($stmt);
+
+
+
+
+
 }
 ?>
 
@@ -39,8 +47,23 @@ if(isset($_POST['insert_record'])) {
 
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" action="Rover.php" method="post">
+                    <form accept-charset="UTF-8" role="form" action="UpdateRover.php" method="post">
                         <fieldset>
+                            <div class="form-group">
+                                <label class="label-default">Select Rover ID</label>
+                                <select class="form-control" name="rover">
+                                    <option disabled selected>Select Rover ID</option>
+                                    <?php
+                                    $get = oci_parse($conn,'SELECT ROVER_ID,Rover_Name FROM ROVER');
+                                    oci_execute($get);
+                                    while ($row = oci_fetch_array($get,OCI_ASSOC+OCI_RETURN_NULLS)){
+                                        echo "<option value='" . $row['ROVER_ID'] . "'>" . $row['ROVER_NAME'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+
                             <div class="form-group">
                                 <label class="label-default">Rover Name</label>
                                 <input class="form-control" placeholder="Rover Name" name="Rover_Name" type="text">
@@ -65,7 +88,8 @@ if(isset($_POST['insert_record'])) {
                                 <label class="label-default">Landed To</label>
                                 <input class="form-control" placeholder="Landed To" name="Landed_To" type="text">
                             </div>
-                            <input class="btn btn-lg btn-dark btn-block" type="submit" name="insert_record" value="Add Rover">
+                            <input class="btn btn-lg btn-dark btn-block" type="submit" name="Update_record" value="Update Rover Details">
+                            <input class="btn btn-lg btn-danger btn-block" type="submit" name="Delete_record" value="Delete Rover Details">
                         </fieldset>
                     </form>
                 </div>

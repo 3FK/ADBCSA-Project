@@ -1,5 +1,5 @@
 table camera
-CREATE TABLE camera("camera_id" VARCHAR2(5),"Rover_ID" VARCHAR2(5),"Camera_Type" VARCHAR2(20),"Focal_Length" VARCHAR2(10),"FieldOfView" VARCHAR2(15),"No_Of_Pixels" VARCHAR2(15),"Memory" VARCHAR2(20));
+CREATE TABLE camera("camera_id" VARCHAR2(5),"Rover_ID" VARCHAR2(10),"Camera_Type" VARCHAR2(20),"Focal_Length" VARCHAR2(10),"FieldOfView" VARCHAR2(15),"No_Of_Pixels" VARCHAR2(15),"Memory" VARCHAR2(20));
 
 INSERT INTO camera ("camera_id","Rover_ID","Camera_Type","Focal_Length","FieldOfView","No_Of_Pixels","Memory") VALUES ('C001','R002','Pancam','5','80','20','1024');
 

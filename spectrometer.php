@@ -88,12 +88,13 @@ if(isset($_POST['insert_record'])) {
                         <fieldset>
 
                             <div class="form-group">
-
+                                <label class="label-default">Spectrometer ID</label>
                                 <input class="form-control" placeholder="spectrometer ID" name="spectrometer_id" type="text">
 
                             </div>
 
                             <div class="form-group">
+                                <label class="label-default">Select Rover ID</label>
                                 <select class="form-control" name="rover">
                                     <option disabled selected>Select Rover ID</option>
                                     <?php
@@ -107,14 +108,14 @@ if(isset($_POST['insert_record'])) {
                                 </select>
                             </div>
                             <div class="form-group">
-
+                                <label class="label-default">Spectrometer Name</label>
                                 <input class="form-control" placeholder="Spectrometer Name" name="spectrometer_Name" type="text">
 
                             </div>
 
 
                             <div class="form-group">
-
+                                <label class="label-default">Spectrometer type</label>
                                 <select class="form-control" name="Spectrometer_type">
                                     <option value=""disabled selected>spectrometer type</option>
                                     <option value="Miniature Thermal Emission Spectrometer">Miniature Thermal Emission Spectrometer </option>
